@@ -20,26 +20,25 @@ public class StringOperation {
 	 * @param str2 is a 2nd string
 	 * @return integer value - 0(2 strings are Not Equal), 1(2 strings are Equal)
 	 */
-	public int stringCmp(String str1,String str2)
-	{
+	public int stringCmp(String str1,String str2) {
 		int len1=str1.length();
 		int len2=str2.length();
-		int lenMin=Math.min(len1,len2);
-		for(int i=0;i<lenMin;i++)
-		{
-			int str1_ch=(int)(str1.charAt(i));
-			int str2_ch=(int)(str2.charAt(i));
-			if(str1_ch!=str2_ch){
-				return 0;
-			}
-		}
-		if(len1!=len2){
+		if(len1 != len2){
 			return 0;
 		}
-		else{
-		return 1;	
+		else if (len1 == len2) {
+			for(int i=0;i<len1;i++)
+			{
+				int str1_ch = str1.charAt(i) ; 
+				int str2_ch = str2.charAt(i);
+				if(str1_ch != str2_ch){
+					return 0;
+				}
+			}
 		}
-	
+
+		return 1;	
+
 	}
 	
 	/**
@@ -47,8 +46,7 @@ public class StringOperation {
 	 * @param str is string which is being reversed 
 	 * @return reverse string
 	 */
-	public String stringRev(String str)
-	{
+	public String stringRev(String str) {
 		String rev;
 		int lenStr = str.length();
 		char [] ch = new char[lenStr];
@@ -65,22 +63,19 @@ public class StringOperation {
 	 * @param str which is being replaced
 	 * @return replaced string
 	 */
-	public String stringReplace(String str)
-	{
-		StringBuffer newstr=new StringBuffer(str);
-		for(int i=0;i<str.length();i++)
-		{
-			if(Character.isLowerCase(str.charAt(i)))
-			{
-				newstr.setCharAt(i,Character.toUpperCase(str.charAt(i)));
+	public String stringReplace(String str) {
+		StringBuffer newStr=new StringBuffer(str);
+		
+		for(int i = 0; i<str.length(); i++) {
+			if(str.charAt(i)>='A' && str.charAt(i)<='Z') {
+				newStr.setCharAt(i, (char) (str.charAt(i) + 32)); 
 			}
-			
-			else if(Character.isUpperCase(str.charAt(i)))
-			{
-				newstr.setCharAt(i, Character.toLowerCase(str.charAt(i)));
+			else if(str.charAt(i)>='a' && str.charAt(i)<='z') {
+				newStr.setCharAt(i, (char) (str.charAt(i) - 32));
 			}
 		}
-		str = newstr.toString();
+		
+		str = newStr.toString();
 		return str;
 	}
 	
@@ -88,27 +83,35 @@ public class StringOperation {
 	 * this method finds the largest word in the string
 	 * (If two words are of same length then return last word)
 	 * @param str string which has word
+	 * @return 
 	 * @return the largest word(string) from the string str
 	 */
-	public String stringLargest(String str )
-	{
+	public String stringLargest(String str ) {
 		
-		String [] words=str.split(" ");
+		str += " ";
 		String longestWord="";
-		for(int i=0; i<words.length; i++)
-		{
-			if(words[i].length()>=longestWord.length())
-			{
-				longestWord=words[i];
+		String temp = "";
+		int count = 0, max = 0;
+		for(int i=0; i < str.length(); i++) {
+			if(str.charAt(i) == ' ') {
+				if(count > max) {
+					max = count;
+					longestWord = temp;
+				}
+				temp = "";
+				count = 0;
+			}
+			else {
+				count++;
+				temp += str.charAt(i) + "";
+				
 			}
 		}
-		return longestWord;
-		
+		return longestWord.toString();
 	}
 
-	public static void main(String[] args)
-	{
-		StringOperation stringObj=new StringOperation();
+	public static void main(String[] args) {
+		StringOperation stringObj = new StringOperation();
 		
 		
 		System.out.print("Enter 1st String:-  ");
@@ -145,6 +148,7 @@ public class StringOperation {
 		
 		System.out.println("\nString Largest Repeating Alphabet Operation on string 2 : ");
 		System.out.println(stringObj.stringLargest(stringObj.str2));
+
 	}
-    
+
 }

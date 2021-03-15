@@ -1,3 +1,4 @@
+
 /**
  * Area is used to calculate area of triangle, rectangle, square, circle
  * By using methods of that
@@ -23,8 +24,7 @@ public class Area {
 	 * @param breadth in double, breadth of rectangle
 	 * @return the area of rectangle in double 
 	 */
-	public double rectangle(double length,double breadth)
-	{
+	public double rectangle(double length,double breadth) {
 		return length*breadth;
 	}
 	
@@ -33,23 +33,22 @@ public class Area {
 	 * @param side in double, side of square
 	 * @return the area of square in double
 	 */
-	public double square(double side)
-	{
+	public double square(double side) {
 		return side*side;
 	}
 	
 	/**
 	 * to calculate the area of circle
+	 * Value of PI = 3.14
 	 * @param radius in double, the radius of circle
 	 * @return the area of circle in double
 	 */
-	public double circle(double radius)
-	{
+	public double circle(double radius) {
 		return 3.14*radius*radius;
 	}
 	
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
+		
 		Area area=new Area();  // object of Area class
 		System.out.print("\nThe Area of the Triangle with base 10 and height 10 is : ");
 		System.out.println(area.triangle(10, 10));
