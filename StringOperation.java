@@ -23,6 +23,7 @@ public class StringOperation {
 	public int stringCmp(String str1,String str2) {
 		int len1=str1.length();
 		int len2=str2.length();
+		
 		if(len1 != len2){
 			return 0;
 		}
@@ -36,9 +37,7 @@ public class StringOperation {
 				}
 			}
 		}
-
 		return 1;	
-
 	}
 	
 	/**
@@ -82,21 +81,23 @@ public class StringOperation {
 	/**
 	 * this method finds the largest word in the string
 	 * (If two words are of same length then return last word)
-	 * @param str string which has word
-	 * @return 
-	 * @return the largest word(string) from the string str
+	 * @param str string which has word 
+	 * @return String the largest word(string) from the string str
 	 */
 	public String stringLargest(String str ) {
-		
+
 		str += " ";
 		String longestWord="";
 		String temp = "";
+
 		int count = 0, max = 0;
 		for(int i=0; i < str.length(); i++) {
+
 			if(str.charAt(i) == ' ') {
 				if(count > max) {
 					max = count;
 					longestWord = temp;
+					
 				}
 				temp = "";
 				count = 0;
@@ -107,11 +108,13 @@ public class StringOperation {
 				
 			}
 		}
-		return longestWord.toString();
+		
+		return longestWord.toString();			
 	}
 
-	public static void main(String[] args) {
-		StringOperation stringObj = new StringOperation();
+	public static void main(String[] args)
+	{
+		StringOperation stringObj=new StringOperation();
 		
 		
 		System.out.print("Enter 1st String:-  ");
@@ -145,6 +148,7 @@ public class StringOperation {
 		
 		System.out.println("\nString Largest Repeating Alphabet Operation on string 1 : ");
 		System.out.println(stringObj.stringLargest(stringObj.str1));
+
 		
 		System.out.println("\nString Largest Repeating Alphabet Operation on string 2 : ");
 		System.out.println(stringObj.stringLargest(stringObj.str2));
